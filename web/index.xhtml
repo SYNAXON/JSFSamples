@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Welcome</title>
+    </h:head>
+    <h:body>
+        <h:form prependId="false">
+            <h1>Please enter your name:</h1>
+            <table>
+                <tr>
+                    <td>Name:</td>
+                    <td>
+                        <h:inputText value="#{userBean.name}" id="name" valueChangeListener="#{userBean.inputChanged}">
+                            <f:validator validatorId="myValidator" />
+                            <f:converter converterId="myConverter" />
+                        </h:inputText>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Lastname:</td>
+                    <td>
+                        <h:inputText value="#{userBean.lastname}" id="lastname">
+                            <f:validator validatorId="myValidator" />
+                            <f:converter converterId="myConverter" />
+                        </h:inputText>
+                    </td>
+                </tr>
+            </table>
+            <p><h:commandButton value="Welcome" action="#{userBean.welcome}" immediate="true"/></p>
+            <h1>ProjectStage</h1>
+            #{userBean.stage}
+        </h:form>
+    </h:body>
+</html>
+

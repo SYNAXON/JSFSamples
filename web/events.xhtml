@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <f:metadata>
+
+        <f:event type="preRenderView" listener="#{eventBean.viewLog}" />
+        <f:event type="preValidate" listener="#{eventBean.viewLog}" />
+
+    </f:metadata>
+    <h:head>
+        <title>Welcome</title>
+        <ui:debug />
+    </h:head>
+    <h:body>
+        <h:form id="form">
+            <h:selectOneMenu value="#{eventBean.value}"
+
+                             valueChangeListener="#{eventBean.valueChangeMethod}">
+                <f:selectItems value="#{eventBean.values}" />
+            </h:selectOneMenu>
+            <h:commandButton id="submitButton"
+                             value="Submit"
+                             action="#{eventBean.outcome}"
+                             actionListener="#{eventBean.printIt}">
+                <f:actionListener type="de.synaxon.jsfsamples.ClickCounter" />
+            </h:commandButton>
+        </h:form>
+    </h:body>
+</html>

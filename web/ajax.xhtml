@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>AJAX Example</title>
+        <script type="text/javascript">
+            var myListener = function(ajaxResponse) {
+                switch (ajaxResponse.status) {
+                    case 'begin':
+                        alert("Begin AJAX");
+                        break;
+                    case 'complete':
+                        alert("AJAX complete");
+                        break;
+                    case 'success':
+                        alert("AJAX success");
+                        break;
+                }
+                console.log(ajaxResponse);
+            };
+
+            var errorHandler = function(ajaxResponse) {
+                alert("There was an error!");
+                console.log(ajaxResponse);
+            };
+
+        </script>
+    </h:head>
+    <body>
+        <h:form>
+            Dein Name ist: #{requestScope.input}<br />
+            <label for="input">AJAX</label>
+            <f:ajax
+                execute="@all"
+                render="input1"
+                listener="#{ajaxBean.callMeBaby}"
+                disabled="#{ajaxBean.disabled}"
+                onevent="myListener"
+                onerror="errorHandler"
+                >
+                <h:inputText id="input1" value="#{requestScope.input}">
+                </h:inputText>
+                <br />
+                <label for="notSending">No Ajax</label>
+                <h:inputText id="notSending" value="#{ajaxBean.someInput}"/>
+            </f:ajax>
+        </h:form>
+        <h:outputText value="I'am outside of the form #{requestScope.input}" />
+        <br />
+        <h:outputText value="AJAX disabled!" rendered="#{ajaxBean.disabled}"/>
+        <ui:debug />
+    </body>
+</html>
