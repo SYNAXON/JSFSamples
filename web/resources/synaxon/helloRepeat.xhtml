@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:cc="http://java.sun.com/jsf/composite"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <cc:interface componentType="helloRepeat">
+        <cc:attribute name="totalStars" type="java.lang.Integer" default="10" />
+    </cc:interface>
+    <cc:implementation>
+        <span style="font-size: 1.5em;">
+            <ui:repeat value="#{cc.items}" var="loop">
+                <h:outputText value="&#9733;" />
+            </ui:repeat>
+        </span>
+    </cc:implementation>
+</html>
