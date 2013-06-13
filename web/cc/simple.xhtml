@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:syn="http://java.sun.com/jsf/composite/synaxon">
+    <h:head>
+        <title>Simple Composite Component</title>
+    </h:head>
+    <body>
+        <h:form>
+            <syn:loginPanel passwordValidatorMessage="Wrong password dude!" action="next">
+                <f:validateLength for="userid" minimum="4" />
+                <f:validateLength for="password" minimum="4" maximum="6" />
+            </syn:loginPanel>
+        </h:form>
+    </body>
+</html>
