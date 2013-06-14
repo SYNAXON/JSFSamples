@@ -10,12 +10,20 @@ import javax.faces.component.UINamingContainer;
 @FacesComponent("helloRepeat")
 public class HtmlHelloRepeat extends UINamingContainer {
 
+    /**
+     *
+     * @return
+     */
     public Object[] getItems() {
         Integer intValue = getFactor();
         setFactor(intValue);
         return new Object[intValue.intValue()];
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getFactor() {
         if (getStateHelper().get("factor") == null) {
             Object totalStars = getAttributes().get("totalStars");
@@ -25,6 +33,10 @@ public class HtmlHelloRepeat extends UINamingContainer {
         return (Integer) getStateHelper().get("factor");
     }
 
+    /**
+     *
+     * @param factor
+     */
     public void setFactor(Integer factor) {
         factor++;
         getStateHelper().put("factor", factor);
