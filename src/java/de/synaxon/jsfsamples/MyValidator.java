@@ -1,9 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package de.synaxon.jsfsamples;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -22,6 +20,11 @@ public class MyValidator implements Validator {
             throws ValidatorException {
 
         System.out.println("===> MyValidator validate: " + value + " Component: " + component.getId());
-        throw new ValidatorException(new FacesMessage("So geht das nicht!"));
+
+        String messageBundleFQCN = context.getApplication().getMessageBundle();
+        Locale locale = context.getViewRoot().getLocale();
+        ResourceBundle bundle = ResourceBundle.getBundle(messageBundleFQCN, locale);
+
+        throw new ValidatorException(new FacesMessage(bundle.getString("myValidator")));
     }
 }

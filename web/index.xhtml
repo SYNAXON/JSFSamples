@@ -3,16 +3,18 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:synaxon="http://synaxon.de/jsfsamples">
     <h:head>
-        <title>Welcome</title>
+        <title>#{myMessages['index.title']}</title>
+        <h:outputStylesheet library="theme1" name="css/sample.css" />
     </h:head>
     <h:body>
         <h:form prependId="false">
-            <h1>Please enter your name:</h1>
+            <h1>#{myMessages['index.headline.1']}</h1>
             <table>
                 <tr>
-                    <td>Name:</td>
+                    <td>#{myMessages['index.name']}</td>
                     <td>
                         <h:inputText value="#{userBean.name}" id="name" valueChangeListener="#{userBean.inputChanged}">
                             <f:validator validatorId="myValidator" />
@@ -21,17 +23,23 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Lastname:</td>
+                    <td>#{myMessages['index.lastname']}</td>
                     <td>
                         <h:inputText value="#{userBean.lastname}" id="lastname">
                             <f:validator validatorId="myValidator" />
                             <f:converter converterId="myConverter" />
+                            <synaxon:confirm />
                         </h:inputText>
                     </td>
                 </tr>
             </table>
-            <p><h:commandButton value="Welcome" action="#{userBean.welcome}" immediate="true"/></p>
-            <h1>ProjectStage</h1>
+            <p><h:outputText value="Das kann man sehen!" rendered="#{myMessages['index.show']}"/></p>
+            <p>
+                <h:commandButton value="Welcome" action="#{userBean.welcome}" >
+                    <synaxon:confirm />
+                </h:commandButton>
+            </p>
+            <h1>#{myMessages['index.headline.2']}</h1>
             #{userBean.stage}
         </h:form>
     </h:body>
